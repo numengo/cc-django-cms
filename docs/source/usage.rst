@@ -11,7 +11,7 @@ First, get and install cookiecutter in your virtualenv::
 
 Now run it against this repo::
 
-    $ cookiecutter https://github.com/palazzem/cookiecutter-django-cms.git --checkout 0.2.3
+    $ cookiecutter https://github.com/numengo/cc-django-cms
 
 You'll be prompted for some project configurations::
 

@@ -1,0 +1,17 @@
+{ // https://romandc.com/zappa-django-guide/
+  // PROTECTED REGION ID({{project.name}}.zappa.settings.dev) ENABLED START
+    "dev": {
+        "aws_region": "{{cookiecutter.zappa_aws_region}}",
+        "s3_bucket": "{{cookiecutter.zappa_s3_bucket}}",
+        "django_settings": "{{cookiecutter.package_name}}.settings"
+    },
+  // # PROTECTED REGION END
+  // PROTECTED REGION ID({{project.name}}.zappa.settings.prod) ENABLED START
+    "prod": {
+        "aws_region": "{{cookiecutter.zappa_aws_region}}",
+        "s3_bucket": "{{cookiecutter.zappa_s3_bucket}}",
+        "django_settings": "{{cookiecutter.package_name}}.settings"
+      // "domain": "www.{{cookiecutter.domain_name}}",
+    }
+  // # PROTECTED REGION END
+}

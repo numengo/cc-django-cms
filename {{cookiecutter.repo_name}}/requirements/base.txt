@@ -1,40 +1,54 @@
-# Django 
-Django==1.11.12
 
-# Django CMS + dependencies
-appdirs==1.4.0
-django-appconf==1.0.2
-django-classy-tags==0.8.0
-django-cms==3.5.2
-django-compressor==2.1.1
-django-formtools==2.0
-django-sekizai==0.10.0
-django-treebeard==4.3
-djangocms-admin-style==1.2.8
-djangocms-text-ckeditor==3.4.0
-html5lib==0.9999999
-olefile==0.44
-packaging==16.8
+redis
+appdirs
+olefile
+packaging
 Pillow==4.0.0
 pyparsing==2.1.10
-rcssmin==1.0.6
-rjsmin==1.0.12
-six==1.10.0
+rcssmin
+rjsmin
+six
 
-{% if cookiecutter.django_filer == "y" or cookiecutter.django_filer == "Y" %}
+
+# Django
+Django=={{cookiecutter.django_version}}
+# PROTECTED REGION ID({{cookiecutter.project.name}}.django.requirements) ENABLED START
+django-classy-tags
+django-reversion
+django-rq
+django-compressor
+django-sekizai
+# PROTECTED REGION END
+
+{% if cookiecutter.django_cms_version %}
+# Django CMS
+django-cms=={{cookiecutter.django_cms_version}}
+# PROTECTED REGION ID({{cookiecutter.project.name}}.django_cms.requirements) ENABLED START
+django-appconf
+#django-formtools
+django-treebeard
+djangocms-admin-style
+djangocms-text-ckeditor
+djangocms-style
+djangocms-googlemap
+djangocms-inherit
+Django-Select2
+django-categories
 # Django filer plugin
-django-filer==1.3.1
-easy-thumbnails==2.5
-cmsplugin-filer==1.1.3
+django-filer
+easy-thumbnails
+cmsplugin-filer
+# PROTECTED REGION END
 {% endif %}
 
-{% if cookiecutter.extra_plugins == "y" or cookiecutter.extra_plugins == "Y" %}
-djangocms-style==2.0.1
-djangocms-googlemap==1.0.2
-djangocms-inherit==0.2.1
-Django-Select2==5.8.10
+{% if cookiecutter.django_rest_framework_version %}
+djangorestframework=={{cookiecutter.django_rest_framework_version}}
+# PROTECTED REGION ID({{cookiecutter.project.name}}.django_rest_framework.requirements) ENABLED START
+# PROTECTED REGION END
 {% endif %}
 
-django-reversion==2.0.13
-django-rq==0.9.4
-redis==2.10.5
+{% if cookiecutter.zappa == 'y' %}
+zappa
+# PROTECTED REGION ID({{cookiecutter.project.name}}.zappa.requirements) ENABLED START
+# PROTECTED REGION END
+{% endif %}

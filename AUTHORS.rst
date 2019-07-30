@@ -2,12 +2,14 @@
 Authors
 =======
 
+Forked from https://github.com/palazzem/cookiecutter-django-cms
+
 Development Lead
 ----------------
 
-* Emanuele Palazzetti <hello@palazzetti.me>
+* Cedric ROMAN <roman@numengo.com>
 
 Contributors
 ------------
 
-* Dacian Popute @ KuwaitNET <dacian@kuwaitnet.com>
+No contributors yet! Be the first!

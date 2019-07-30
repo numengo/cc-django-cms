@@ -42,7 +42,7 @@ DEBUG = STAGING = False
 ########## END DEBUG CONFIGURATION
 
 ADMINS = (
-    ("""{{cookiecutter.author_name}}""", '{{cookiecutter.email}}'),
+    ("""{{cookiecutter.full_name}}""", '{{cookiecutter.email}}'),
 )
 
 MANAGERS = ADMINS
@@ -121,7 +121,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
-    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 
 )
 
@@ -167,10 +167,10 @@ MIDDLEWARE = (
     'cms.middleware.language.LanguageCookieMiddleware'
 )
 
-ROOT_URLCONF = '{{ cookiecutter.project_name }}.urls'
+ROOT_URLCONF = '{{ cookiecutter.package_name }}.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = '{{ cookiecutter.project_name }}.wsgi.application'
+WSGI_APPLICATION = '{{ cookiecutter.package_name }}.wsgi.application'
 
 INSTALLED_APPS = (
     # Django CMS admin style
@@ -185,30 +185,24 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.messages',
 
-    # Django CMS
+    {% if cookiecutter.django_cms_version %}
+    # PROTECTED REGION ID({{project.name}}.settings.django_cms.apps) ENABLED START
     'cms',
     'menus',
     'sekizai',
     'treebeard',
-    
-
-    {% if cookiecutter.django_filer == "y" or cookiecutter.django_filer == "Y" %}
-    # Django filer
     'filer',
     'easy_thumbnails',
-    'cmsplugin_filer_image',
-    'cmsplugin_filer_file',
-    'cmsplugin_filer_folder',
-    'cmsplugin_filer_teaser',
-    'cmsplugin_filer_utils',
-    'cmsplugin_filer_video',
-    {% endif %}
-
-    {% if cookiecutter.extra_plugins == "y" or cookiecutter.extra_plugins == "Y" %}
     'django_select2',
     'djangocms_style',
-    'djangocms_inherit',
     'djangocms_text_ckeditor',
+    'categories',
+    'categories.editor',
+    # PROTECTED REGION END
+    {% endif %}
+
+    {% if cookiecutter.django_rest_framework_version %}
+    'rest_framework',
     {% endif %}
 
     'reversion',
@@ -274,18 +268,18 @@ LOGGING = {
         },
         'default': {
             'level': 'DEBUG',
-            'class': '{{ cookiecutter.project_name  }}.lib.colorstreamhandler.ColorStreamHandler',
+            'class': '{{ cookiecutter.package_name  }}.lib.colorstreamhandler.ColorStreamHandler',
         },
         'console_dev': {
             'level': 'DEBUG',
             'filters': ['development_only'],
-            'class': '{{ cookiecutter.project_name }}.lib.colorstreamhandler.ColorStreamHandler',
+            'class': '{{ cookiecutter.package_name }}.lib.colorstreamhandler.ColorStreamHandler',
             'formatter': 'simple',
         },
         'console_prod': {
             'level': 'INFO',
             'filters': ['production_only'],
-            'class': '{{ cookiecutter.project_name }}.lib.colorstreamhandler.ColorStreamHandler',
+            'class': '{{ cookiecutter.package_name }}.lib.colorstreamhandler.ColorStreamHandler',
             'formatter': 'simple',
         },
         'file_log': {
@@ -326,7 +320,7 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': False,
         },
-        '{{ cookiecutter.project_name }}': {
+        '{{ cookiecutter.package_name }}': {
             'handlers': ['file_log'],
             'level': 'INFO',
             'propagate': False,
@@ -344,6 +338,7 @@ LOCALE_PATHS = (normpath(join(PROJECT_ROOT, 'locale')),)
 # Dummy gettext function
 gettext = lambda s: s
 
+{% if cookiecutter.django_cms_version %}
 # Django CMS configurations
 CMS_TEMPLATES = (
     ('single_page.html', gettext('Single page')),
@@ -375,7 +370,6 @@ CMS_LANGUAGES = {
     ],
 }
 
-{% if cookiecutter.django_filer == "y" or cookiecutter.django_filer == "Y" %}
 TEXT_SAVE_IMAGE_FUNCTION='cmsplugin_filer_image.integrations.ckeditor.create_image_plugin'
 THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.colorspace',
@@ -435,3 +429,9 @@ RQ_QUEUES = {
 
 RQ_SHOW_ADMIN_LINK = True
 ########## END REDIS QUEUE CONFIGURATION
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
