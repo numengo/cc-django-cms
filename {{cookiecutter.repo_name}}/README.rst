@@ -9,7 +9,7 @@
     :target: https://crate.io/packages/{{ cookiecutter.repo_name }}?version=latest
 
 
-{{ cookiecutter.description }}
+{{ cookiecutter.project_short_description }}
 
 * Free software: BSD license
 
@@ -38,3 +38,13 @@ Installation
 #. Apply migrations::
 
     $ python manage.py migrate
+
+#. Load initial data::
+
+    $ python manage.py loaddata initial_data
+
+#. Load initial data::
+
+    $ python manage.py runserver
+
+#. browse your api: http://127.0.0.1:8000/api

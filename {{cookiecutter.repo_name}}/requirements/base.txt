@@ -2,6 +2,7 @@
 redis
 appdirs
 olefile
+docutils<0.15
 packaging
 Pillow==4.0.0
 pyparsing==2.1.10
@@ -12,7 +13,8 @@ six
 
 # Django
 Django=={{cookiecutter.django_version}}
-# PROTECTED REGION ID({{cookiecutter.project.name}}.django.requirements) ENABLED START
+# PROTECTED REGION ID({{cookiecutter.project_name}}.django.requirements) ENABLED START
+django-secret-settings
 django-classy-tags
 django-reversion
 django-rq
@@ -23,7 +25,7 @@ django-sekizai
 {% if cookiecutter.django_cms_version %}
 # Django CMS
 django-cms=={{cookiecutter.django_cms_version}}
-# PROTECTED REGION ID({{cookiecutter.project.name}}.django_cms.requirements) ENABLED START
+# PROTECTED REGION ID({{cookiecutter.project_name}}.django_cms.requirements) ENABLED START
 django-appconf
 #django-formtools
 django-treebeard
@@ -43,12 +45,10 @@ cmsplugin-filer
 
 {% if cookiecutter.django_rest_framework_version %}
 djangorestframework=={{cookiecutter.django_rest_framework_version}}
-# PROTECTED REGION ID({{cookiecutter.project.name}}.django_rest_framework.requirements) ENABLED START
-# PROTECTED REGION END
-{% endif %}
-
-{% if cookiecutter.zappa == 'y' %}
-zappa
-# PROTECTED REGION ID({{cookiecutter.project.name}}.zappa.requirements) ENABLED START
+# PROTECTED REGION ID({{cookiecutter.project_name}}.django_rest_framework.requirements) ENABLED START
+drf-yasg
+#drf-schema-adapter
+pyyaml
+django-coreapi
 # PROTECTED REGION END
 {% endif %}

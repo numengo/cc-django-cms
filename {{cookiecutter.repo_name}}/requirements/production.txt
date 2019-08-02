@@ -1,10 +1,8 @@
 # Production requirements
 -r base.txt
 
-{% if cookiecutter.zappa == "y" or cookiecutter.zappa == "Y" %}
-dj-database-url
-gunicorn
-django-storages
-boto
-gevent
+{% if cookiecutter.zappa == 'y' %}
+zappa
+# PROTECTED REGION ID({{cookiecutter.project_name}}.zappa.requirements) ENABLED START
+# PROTECTED REGION END
 {% endif %}

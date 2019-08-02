@@ -1,6 +1,6 @@
 from .base import *
 
-# PROTECTED REGION ID({{cookiecutter.project.name}}.django.requirements) ENABLED START
+# PROTECTED REGION ID({{cookiecutter.project_name}}.django.requirements) ENABLED START
 ALLOWED_HOSTS = [
     '{{ cookiecutter.domain_name }}',
 ]

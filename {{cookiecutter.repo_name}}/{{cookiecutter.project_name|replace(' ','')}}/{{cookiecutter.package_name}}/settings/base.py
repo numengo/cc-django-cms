@@ -186,7 +186,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
 
     {% if cookiecutter.django_cms_version %}
-    # PROTECTED REGION ID({{project.name}}.settings.django_cms.apps) ENABLED START
+    # PROTECTED REGION ID({{cookiecutter.project_name}}.settings.django_cms.apps) ENABLED START
     'cms',
     'menus',
     'sekizai',
@@ -203,6 +203,7 @@ INSTALLED_APPS = (
 
     {% if cookiecutter.django_rest_framework_version %}
     'rest_framework',
+    'drf_yasg',
     {% endif %}
 
     'reversion',
@@ -430,8 +431,16 @@ RQ_QUEUES = {
 RQ_SHOW_ADMIN_LINK = True
 ########## END REDIS QUEUE CONFIGURATION
 
-
+{% if cookiecutter.django_rest_framework_version %}
+# PROTECTED REGION ID({{cookiecutter.project_name}}.django_rest_framework.settings) ENABLED START
 REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    #'DEFAULT_METADATA_CLASS': 'drf_auto_endpoint.metadata.AutoMetadata',
+    #'DEFAULT_AUTHENTICATION_CLASSES': 'rest_framework.authentication.SessionAuthentication',
+    #'DEFAULT_SCHEMA_CLASS': '{{cookiecutter.package_name}}.urls.FixedAutoSchema',
     'PAGE_SIZE': 10
 }
+# PROTECTED REGION END
+{% endif %}
+
