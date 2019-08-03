@@ -6,7 +6,7 @@ from .base import *
 DEBUG = True
 DEV = DEBUG
 
-# PROTECTED REGION ID({{cookiecutter.project_name}}.django.requirements) ENABLED START
+# PROTECTED REGION ID({{cookiecutter.package_name}}.django.requirements) ENABLED START
 ALLOWED_HOSTS = [ '127.0.0.1', '.execute-api.{{ cookiecutter.zappa_aws_region }}.amazonaws.com', ]
 
 INSTALLED_APPS += ('debug_toolbar',)

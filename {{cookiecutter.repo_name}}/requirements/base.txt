@@ -13,7 +13,7 @@ six
 
 # Django
 Django=={{cookiecutter.django_version}}
-# PROTECTED REGION ID({{cookiecutter.project_name}}.django.requirements) ENABLED START
+# PROTECTED REGION ID({{cookiecutter.repo_name}}.requirements.base.django) ENABLED START
 django-secret-settings
 django-classy-tags
 django-reversion
@@ -25,7 +25,7 @@ django-sekizai
 {% if cookiecutter.django_cms_version %}
 # Django CMS
 django-cms=={{cookiecutter.django_cms_version}}
-# PROTECTED REGION ID({{cookiecutter.project_name}}.django_cms.requirements) ENABLED START
+# PROTECTED REGION ID({{cookiecutter.repo_name}}.requirements.base.django_cms) ENABLED START
 django-appconf
 #django-formtools
 django-treebeard
@@ -45,7 +45,7 @@ cmsplugin-filer
 
 {% if cookiecutter.django_rest_framework_version %}
 djangorestframework=={{cookiecutter.django_rest_framework_version}}
-# PROTECTED REGION ID({{cookiecutter.project_name}}.django_rest_framework.requirements) ENABLED START
+# PROTECTED REGION ID({{cookiecutter.repo_name}}.requirements.base.django_rest_framework) ENABLED START
 drf-yasg
 #drf-schema-adapter
 pyyaml

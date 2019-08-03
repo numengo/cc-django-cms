@@ -27,7 +27,7 @@ schema_view = get_schema_view(
    permission_classes=(permissions.AllowAny,),
 )
 
-# PROTECTED REGION ID({{cookiecutter.project_name}}.django_rest_framework.routers) ENABLED START
+# PROTECTED REGION ID({{cookiecutter.package_name}}.urls.drf.definitions) ENABLED START
 # Serializers define the API representation.
 from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
@@ -71,19 +71,11 @@ urlpatterns = [
     path(r'i18n/', include('django.conf.urls.i18n')),
 
 {% if cookiecutter.django_rest_framework_version %}
-    # PROTECTED REGION ID({{cookiecutter.project_name}}.django_rest_framework.urls) ENABLED START
+    # PROTECTED REGION ID({{cookiecutter.package_name}}.urls.drf.urlpatterns) ENABLED START
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    # Use the `get_schema_view()` helper to add a `SchemaView` to project URLs.
-    #   * `title` and `description` parameters are passed to `SchemaGenerator`.
-    #   * Provide view name for use with `reverse()`.
-    url(r'swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
-    path(r'swagger', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    #path('openapi/', get_schema_view(
-    #    title="{{cookiecutter.project_name}}",
-    #    url='/api/',
-    #    description="{{cookiecutter.project_short_description}}"),
-    #    name='openapi-schema'),
+    url(r'api/swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    path(r'api/swagger', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     # PROTECTED REGION END
 {% endif %}
 ]
@@ -97,7 +89,7 @@ urlpatterns += i18n_patterns(
     path(r'select2/', include('django_select2.urls')),
 
 {% if cookiecutter.django_cms_version %}
-    # PROTECTED REGION ID({{cookiecutter.project_name}}.django_cms.urls) ENABLED START
+    # PROTECTED REGION ID({{cookiecutter.package_name}}.urls.django_cms) ENABLED START
     path(r'', include('cms.urls')),
     path(r'sitemap\.xml', sitemap, {'sitemaps': {'cmspages': CMSSitemap}}),
     # PROTECTED REGION END

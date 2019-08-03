@@ -3,6 +3,6 @@
 
 {% if cookiecutter.zappa == 'y' %}
 zappa
-# PROTECTED REGION ID({{cookiecutter.project_name}}.zappa.requirements) ENABLED START
+# PROTECTED REGION ID({{cookiecutter.repo_name}}.requirements.production.zappa) ENABLED START
 # PROTECTED REGION END
 {% endif %}
