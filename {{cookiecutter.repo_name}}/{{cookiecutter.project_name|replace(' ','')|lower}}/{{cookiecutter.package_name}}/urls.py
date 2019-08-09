@@ -31,20 +31,6 @@ schema_view = get_schema_view(
 # Serializers define the API representation.
 from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
-#from rest_framework.schemas import get_schema_view
-
-#from drf_auto_endpoint.router import router
-
-#from django.utils.encoding import force_text
-#from rest_framework.schemas.openapi import AutoSchema
-
-#class FixedAutoSchema(AutoSchema):
-#    def _map_serializer(self, serializer):
-#        result = super()._map_serializer(serializer)
-#        for prop, value in result['properties'].items():
-#            if 'description' in value:
-#                value['description'] = force_text(value['description'])
-#        return result
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -57,8 +43,7 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
 # Routers provide an easy way of automatically determining the URL conf.
-#router.register(User)
-router = routers.DefaultRouter()
+from .urls_router import router
 router.register(r'users', UserViewSet)
 # PROTECTED REGION END
 {% endif %}

@@ -173,6 +173,7 @@ ROOT_URLCONF = '{{ cookiecutter.package_name }}.urls'
 WSGI_APPLICATION = '{{ cookiecutter.package_name }}.wsgi.application'
 
 INSTALLED_APPS = (
+    '{{ cookiecutter.package_name }}',
     # Django CMS admin style
     'djangocms_admin_style',
 

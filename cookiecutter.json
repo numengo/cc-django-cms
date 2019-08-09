@@ -1,7 +1,7 @@
 {
     "full_name": "John Doe",
     "email": "john.doe@example.com",
-    "website": "www.example.com"
+    "website": "www.example.com",
     "github_username": "example",
     "project_name": "Example",
     "domain_name": "{{ cookiecutter.project_name|lower|replace(' ','-')}}.com",

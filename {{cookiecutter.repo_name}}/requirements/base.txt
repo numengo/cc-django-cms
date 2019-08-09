@@ -14,6 +14,7 @@ six
 # Django
 Django=={{cookiecutter.django_version}}
 # PROTECTED REGION ID({{cookiecutter.repo_name}}.requirements.base.django) ENABLED START
+psycopg2
 django-secret-settings
 django-classy-tags
 django-reversion
@@ -46,6 +47,7 @@ cmsplugin-filer
 {% if cookiecutter.django_rest_framework_version %}
 djangorestframework=={{cookiecutter.django_rest_framework_version}}
 # PROTECTED REGION ID({{cookiecutter.repo_name}}.requirements.base.django_rest_framework) ENABLED START
+markdown==3.1
 drf-yasg
 #drf-schema-adapter
 pyyaml

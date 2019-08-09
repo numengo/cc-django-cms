@@ -15,6 +15,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': '{{ cookiecutter.package_name }}.db',
+        #'CONN_MAX_AGE': 0,
+        #'ENGINE': 'django.db.backends.postgresql_psycopg2',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        #'NAME': '{{ cookiecutter.package_name }}_db',
+        #'USER': '',
+        #'PASSWORD': '',
     }
 }
 
